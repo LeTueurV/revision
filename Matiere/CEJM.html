@@ -66,34 +66,47 @@
 
     <script>
         function checkExamMode() {
-            let now = new Date();
-            let hours = now.getHours();
-            let examStylesheet = document.getElementById("examStylesheet");
+    let now = new Date();
+    let hours = now.getHours();
+    let examStylesheet = document.getElementById("examStylesheet");
+
+    if (hours >= 10 && hours < 12) { // Mode examen entre 10h et 12h
+        document.body.classList.add("exam-mode");
+        examStylesheet.removeAttribute("disabled");
+        checkAccess();
+    } else {
+        document.body.classList.remove("exam-mode");
+        examStylesheet.setAttribute("disabled", "true");
+        removeExamAlert();
+    }
+}
+
+setInterval(checkExamMode, 60000); // Vérifie chaque minute
+checkExamMode(); // Vérifie immédiatement au chargement
+
+function checkAccess() {
+    let existingAlert = document.getElementById("exam-alert");
+    
+    if (!existingAlert) { // Ajoute le message seulement s'il n'existe pas déjà
+        let alertDiv = document.createElement("div");
+        alertDiv.id = "exam-alert";
+        alertDiv.classList.add("exam-alert", "blinking");
+        alertDiv.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
         
-            if (hours >= 10 && hours < 12) { // Mode examen entre 10h et 12h
-                document.body.classList.add("exam-mode");
-                examStylesheet.removeAttribute("disabled");
-                checkAccess();
-            } else {
-                document.body.classList.remove("exam-mode");
-                examStylesheet.setAttribute("disabled", "true");
-            }
-        }
-        
-        setInterval(checkExamMode, 60000); // Vérifie chaque minute
-        checkExamMode(); // Vérifie immédiatement au chargement
+        document.body.prepend(alertDiv); // Ajoute l'alerte en haut du body
+    }
+}
 
-        function checkAccess() {
-            let now = new Date();
-            let hours = now.getHours();
+function removeExamAlert() {
+    let existingAlert = document.getElementById("exam-alert");
+    
+    if (existingAlert) {
+        existingAlert.remove();
+    }
+}
 
-            if (hours >= 10 && hours < 12) {
-                // Mode examen actif
-                document.body.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
-            }
-        }
+window.onload = checkExamMode;
 
-        window.onload = checkAccess;
 </script>
 
         </script>
