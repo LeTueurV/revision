@@ -8,6 +8,7 @@ function checkExamMode() {
                 <div class="exam-box">
                     <h1>⛔ Mode Examen Activé</h1>
                     <p>L'accès aux cours est désactivé pendant cette période.</p>
+                    <a href="index.html">Retour à l'accueil</a>
                 </div>
             </div>
         `;
@@ -48,6 +49,24 @@ function applyExamStyles() {
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
+        }
+            a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #fff;
+            background: #1f2afd;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        a:hover {
+            background: #000DFF;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
     `;
     document.head.appendChild(style);
