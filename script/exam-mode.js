@@ -8,7 +8,7 @@ function checkExamMode() {
                 <div class="exam-box">
                     <h1>⛔ Mode Examen Activé</h1>
                     <p>L'accès aux cours est désactivé pendant cette période.</p>
-                    <a href="/index.html">Retour à l'accueil</a>
+                    <!--<a href="../index.html">Retour à l'accueil</a>-->
                 </div>
             </div>
         `;
