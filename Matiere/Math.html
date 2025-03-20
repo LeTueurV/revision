@@ -68,6 +68,7 @@
             let examStylesheet = document.getElementById("examStylesheet");
         
             if (hours >= 10 && hours < 12) { // Mode examen entre 10h et 12h
+                document.body.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
                 document.body.classList.add("exam-mode");
                 examStylesheet.removeAttribute("disabled");
             } else {
