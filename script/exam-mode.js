@@ -2,7 +2,7 @@ function checkExamMode() {
     let now = new Date();
     let hours = now.getHours();
 
-    if (hours >= 10 && hours < 12) { // Mode examen actif
+    if (hours >= 15 && hours < 17) { // Mode examen actif
         document.body.innerHTML = `
             <div class="exam-container">
                 <div class="exam-box">
