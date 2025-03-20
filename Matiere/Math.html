@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Révision-Math</title>
-    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="../style/Styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link id="examStylesheet" rel="stylesheet" href="exam-mode.css" disabled>
+
 </head>
 <body>
     <header>
@@ -60,19 +62,24 @@
     <script src="../script.js"></script>
 
     <script>
-        function checkAccess() {
+        function checkExamMode() {
             let now = new Date();
             let hours = now.getHours();
+            let examStylesheet = document.getElementById("examStylesheet");
         
-            if (hours >= 11 && hours < 12) {
-                // Mode examen actif
-                document.body.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
+            if (hours >= 10 && hours < 12) { // Mode examen entre 10h et 12h
+                document.body.classList.add("exam-mode");
+                examStylesheet.removeAttribute("disabled");
+            } else {
+                document.body.classList.remove("exam-mode");
+                examStylesheet.setAttribute("disabled", "true");
             }
         }
         
-        // Vérifier immédiatement en chargeant la page
-        window.onload = checkAccess;
+        setInterval(checkExamMode, 60000); // Vérifie chaque minute
+        checkExamMode(); // Vérifie immédiatement au chargement
         </script>
+        
         
 </body>
 

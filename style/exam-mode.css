@@ -1,0 +1,38 @@
+/* Style général du mode examen */
+.exam-mode {
+    background: #ff4d4d; /* Fond rouge pour alerter */
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Conteneur d’alerte */
+.exam-alert {
+    background: white;
+    color: #ff0000;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Désactivation des liens et boutons */
+.exam-mode a, 
+.exam-mode button, 
+.exam-mode input {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Animation d’alerte */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.blinking {
+    animation: blink 1.5s infinite;
+}
