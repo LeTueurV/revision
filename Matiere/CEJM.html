@@ -61,6 +61,22 @@
     </div>
 
     <script src="../script.js"></script>
+
+    <script>
+        function checkAccess() {
+            let now = new Date();
+            let hours = now.getHours();
+        
+            if (hours >= 11 && hours < 12) {
+                // Mode examen actif
+                document.body.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
+            }
+        }
+        
+        // Vérifier immédiatement en chargeant la page
+        window.onload = checkAccess;
+        </script>
+        
 </body>
 
 </html>
