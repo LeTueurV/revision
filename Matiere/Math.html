@@ -68,9 +68,9 @@
             let examStylesheet = document.getElementById("examStylesheet");
         
             if (hours >= 10 && hours < 12) { // Mode examen entre 10h et 12h
-                document.body.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
                 document.body.classList.add("exam-mode");
                 examStylesheet.removeAttribute("disabled");
+                checkAccess();
             } else {
                 document.body.classList.remove("exam-mode");
                 examStylesheet.setAttribute("disabled", "true");
@@ -79,6 +79,19 @@
         
         setInterval(checkExamMode, 60000); // Vérifie chaque minute
         checkExamMode(); // Vérifie immédiatement au chargement
+
+        function checkAccess() {
+            let now = new Date();
+            let hours = now.getHours();
+
+            if (hours >= 10 && hours < 11) {
+                // Mode examen actif
+                document.body.innerHTML = "<h1>⛔ Mode Examen activé</h1><p>Accès au cours désactivé pendant cette période.</p>";
+            }
+        }
+
+        window.onload = checkAccess;
+
         </script>
         
         <script src="../script.js"></script>
